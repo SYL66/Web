@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网易云音乐轮盘</title>
+    <style>
+        .wrapper{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+        }
+        .table{
+            width: 150px;
+            height: 150px;
+            border: 50px solid #000;
+            border-radius: 50%;
+            background-image: url("./1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation: Rotate 10s linear infinite paused;
+        }
+        .pin{
+            position: relative;
+            top: -315px;
+            left: 50%;
+            width: 6px;
+            height: 150px;
+            transform: rotate(-40deg);
+            transform-origin: top;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 100%;
+            background-color: #ccc;
+            transition: all 0.5s linear;
+        }
+        @keyframes Rotate{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+
+            }
+        }
+        .active{
+            transform: rotate(-60deg);
+        }
+
+    </style>
+</head>
+<body>
+    <button>Click</button>
+    <div class="wrapper">
+        <div class="table"></div>
+        <div class="pin"></div>
+    </div>
+    <script>
+        var oBtn = document.getElementsByTagName('button')[0],
+            oTable = document.getElementsByClassName('table')[0],
+            oPin = document.getElementsByClassName('pin')[0],
+            flag = true;
+        oBtn.onclick = function(){
+            if(flag){
+                flag = false;
+                oPin.className = 'active pin';
+                oTable.style.animationPlayState = 'running';
+            }else{
+                flag = true;
+                oPin.className = 'pin';
+                oTable.style.animationPlayState = 'paused';
+                // oTable.style.background = 'red';
+            }
+        }
+    
+    
+    </script>
+</body>
+</html>

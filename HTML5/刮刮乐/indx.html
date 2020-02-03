@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #myCanvas {
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="300" height="300"></canvas>
+    <script>
+        var oMyCanvas = document.getElementById('myCanvas'),
+            ctx = oMyCanvas.getContext('2d'),
+            w = oMyCanvas.width,
+            h = oMyCanvas.height,
+            nowPoint = {},
+            lastPoint = {};
+
+        function init() {
+            var oImg = new Image();
+            oImg.src = './baozou1.png';
+            oImg.onload = function () {
+                oMyCanvas.style.background = 'url("' + oImg.src + '")';
+                oMyCanvas.addEventListener('mousedown', downFunc, false);
+            }
+            ctx.fillStyle = '#ccc';
+            ctx.fillRect(0, 0, w, h);
+            ctx.globalCompositeOperation = 'destination-out';
+
+        }
+        init();
+
+        function downFunc(e) {
+            lastPoint.x = e.clientX - oMyCanvas.offsetLeft;
+            lastPoint.y = e.clientY - oMyCanvas.offsetTop;
+
+            oMyCanvas.addEventListener('mousemove', moveFunc, false);
+            document.addEventListener('mouseup', upFunc, false);
+        }
+
+        function moveFunc(e) {
+            nowPoint.x = e.clientX - oMyCanvas.offsetLeft;
+            nowPoint.y = e.clientY - oMyCanvas.offsetTop;
+
+            ctx.beginPath();
+            ctx.fillStyle = 'transparent';
+            ctx.lineWidth = 40;
+            ctx.lineCap = 'round';
+            ctx.moveTo(lastPoint.x, lastPoint.y);
+            ctx.lineTo(nowPoint.x, nowPoint.y);
+            ctx.stroke();
+            ctx.arc(nowPoint.x, nowPoint.y, 20, 0, Math.PI * 2, 0);
+            ctx.closePath();
+            ctx.fill();
+
+            lastPoint.x = nowPoint.x;
+            lastPoint.y = nowPoint.y;
+        }
+
+        function upFunc() {
+            oMyCanvas.removeEventListener('mousemove', moveFunc, false);
+            document.removeEventListener('mouseup', upFunc, false);
+            clearCanvas();
+        }
+
+        function clearCanvas() {
+            var d = ctx.getImageData(0, 0, w, h),
+                c = 0;
+            len = d.data.length;
+            for (var i = 0; i < len; i += 4) {
+                if (d.data[i] === 0) {
+                    c++;
+                }
+            }
+            if (c >= len / 4 * 0.7) {
+                ctx.clearRect(0, 0, w, h);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery.js"></script>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				list-style-type: none;
+			}
+
+			.scrollPage {
+				position: relative;
+				width: 360px;
+				height: 202.5px;
+				margin: 15px auto 0;
+				overflow: hidden;
+			}
+
+			.scrollPage:hover {
+				cursor: pointer;
+			}
+
+			ul.scroll-image {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 1080px;
+				height: 202.5px;
+			}
+
+			ul.scroll-image li {
+				float: left;
+				width: 360px;
+			}
+
+			ul.scroll-image li img {
+				width: 100%;
+				height: 100%;
+			}
+
+			ul.scroll-circle {
+				position: absolute;
+				top: 185px;
+				width: 100%;
+				line-height: 15px;
+				text-align: center;
+			}
+
+			ul.scroll-circle li {
+				display: inline-block;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background-color: white;
+			}
+
+			ul.scroll-circle .circleFocus {
+				background-color: lightskyblue;
+			}
+
+			.direction {
+				display: none;
+				position: absolute;
+				width: 100%;
+				font-size: 20px;
+				color: rgba(255, 255, 255, 0.8);
+				top: 50%;
+				margin-top: -15px;
+			}
+
+			.direction-btn {
+				width: 30px;
+				line-height: 30px;
+				background-color: rgba(0, 0, 0, 0.1);
+				text-align: center;
+			}
+
+			.scroll-left {
+				float: left;
+			}
+
+			.scroll-right {
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="scrollPage">
+			<ul class="scroll-image ">
+				<li><img src="./1.jpg"></li>
+				<li><img src="./2.jpg"></li>
+				<li><img src="./3.jpg"></li>
+			</ul>
+			<ul class="scroll-circle">
+				<li class="circleFocus"></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div class="direction">
+				<div class="direction-btn scroll-left">&lt;</div>
+				<div class="direction-btn scroll-right">&gt;</div>
+			</div>
+		</div>
+		<script>
+			$(function() {
+				var timer = null,
+					dirClick = true,
+					index = 0,
+					direction = '<-';
+
+				function autoMove() {
+					clearInterval(timer);
+					if (direction == '<-') {
+						$('.scroll-image').animate({
+							left: (index + 1) * -360 + 'px'
+						}, 1000, 'linear', function() {
+							if (parseInt($('.scroll-image').css('left')) <= -720) {
+								direction = '->';
+							}
+							dirClick = true;
+						});
+						getFocus();
+					} else if (direction == '->') {
+						$('.scroll-image').animate({
+							left: (index - 1) * -360 + 'px'
+						}, 1000, 'linear', function() {
+							if (parseInt($('.scroll-image').css('left')) >= 0) {
+								direction = '<-';
+							}
+							dirClick = true;
+						});
+						getFocus();
+					}
+					timer = setInterval(autoMove, 2000);
+				};
+				autoMove();
+
+				function getFocus() {
+					getIndex();
+					$('.scroll-circle li').removeClass('circleFocus');
+					$('.scroll-circle li').eq(index).addClass('circleFocus');
+				}
+				function getIndex() {
+					if (direction == '<-') {
+						index++;
+					} else if (direction == '->') {
+						index--;
+					}
+				}
+
+				$('.scrollPage').mouseover(function() {
+					$('.direction').css('display', 'block');
+				});
+				$('.scrollPage').mouseout(function() {
+					$('.direction').css('display', 'none');
+				});
+
+				$('.scroll-left').click(function() {
+					if (parseInt($('.scroll-image').css('left')) >= -360) {
+						if (dirClick == true) {
+							dirClick = false;
+							clearInterval(timer);
+							direction = '<-';
+							autoMove();
+						}
+					}
+				});
+				$('.scroll-right').click(function() {
+					if (parseInt($('.scroll-image').css('left')) <= -360) {
+						if (dirClick == true) {
+							dirClick = false;
+							clearInterval(timer);
+							direction = '->';
+							autoMove();
+						}
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

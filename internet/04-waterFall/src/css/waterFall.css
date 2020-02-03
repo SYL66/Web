@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.wrapper{
+    width: 80%;
+    min-width: 930px;
+    margin: 0 auto;
+    border: 1px solid #aaa;
+    border-top: none;
+    text-align: center;
+}
+.waterFall{
+    display: inline-block;
+}
+.waterFall .item {
+    float: left;
+    width: 200px;
+    padding: 5px;
+}
+.waterFall .item~.item{
+    margin-left: 10px;
+}
+.waterFall .item .box{
+    margin-bottom: 20px;
+}
+.waterFall .item .box .cont{
+    width: 200px;
+    overflow: hidden;
+}
+.waterFall .item .box img{
+    width: 200px;
+    border-color: transparent;
+}
+.waterFall .item .box p{
+    text-align: left;
+}

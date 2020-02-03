@@ -1,0 +1,88 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+html,
+body,
+.pptWrapper,
+.pptSlider {
+	width: 100%;
+	height: 100%;
+}
+
+.pptWrapper .pptSlider {
+	position: relative;
+	padding: 200px;
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.pptSlider .sliderText,
+.pptSlider .images {
+	width: 40%;
+}
+
+.pptSlider .images img {
+	width: 100%;
+}
+
+.pptSlider .sliderText {
+	float: left;
+	color: #fff;
+}
+
+.pptSlider .images {
+	border: 1px solid #fff;
+	float: right;
+}
+
+.pptWrapper .sliderBtn {
+	color: #fff;
+	font-size: 30px;
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+	width: 100%;
+}
+
+.pptWrapper .sliderBtn .leftBtn {
+	float: left;
+	margin-left: 50px;
+}
+
+.pptWrapper .sliderBtn .rightBtn {
+	float: right;
+	margin-right: 50px;
+}
+
+.pptWrapper .sliderOrder {
+	position: absolute;
+	width: 100%;
+	margin-top: -30px;
+	text-align: center;
+}
+
+.pptWrapper .sliderOrder li {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #fff;
+}
+
+.pptWrapper .sliderOrder li~li {
+	margin-left: 10px;
+}
+
+.pptWrapper .sliderBtn .leftBtn,
+.pptWrapper .sliderBtn .rightBtn,
+.pptWrapper .sliderOrder li {
+	cursor: pointer;
+}
+
+.pptWrapper .sliderOrder .active {
+	background-color: aqua;
+}

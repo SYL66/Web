@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .wrapper {
+            margin: 100px;
+        }
+
+        input {
+            width: 400px;
+            line-height: 30px;
+        }
+
+        ul {
+            margin-top: -1px;
+            display: none;
+            width: 400px;
+            border: 1px solid #ccc;
+        }
+
+        li {
+            padding: 3px;
+        }
+
+        li:hover {
+            background-color: #ddd;
+        }
+
+        a {
+            display: inline-block;
+            line-height: 16px;
+            font-size: 12px;
+            color: #333;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="text">
+        <ul></ul>
+    </div>
+    <script>
+        var oInput = document.getElementsByTagName('input')[0],
+            oUl = document.getElementsByTagName('ul')[0];
+        oInput.oninput = function () {
+            var value = oInput.value;
+            var oScriipt = document.createElement('script');
+
+            oScriipt.src = 'https://www.baidu.com/sugrec?prod=pc&wd=' + value + '&cb=doJson';
+            document.body.appendChild(oScriipt);
+            document.body.removeChild(oScriipt);
+        }
+        function doJson(data) {
+            var g = data.g,
+                str = '';
+            if (g) {
+                g.forEach(function (ele, index) {
+                    str += '<li><a target="_blank" href="https://www.baidu.com/s?wd=' + ele.q + '">' + ele.q + '</a></li>'
+                });
+                oUl.innerHTML = str;
+                oUl.style.display = 'block';
+            } else {
+                oUl.style.display = 'none';
+            }
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

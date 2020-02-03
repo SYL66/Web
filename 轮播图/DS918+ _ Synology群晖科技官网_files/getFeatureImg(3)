@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0067E5;}
+	.st1{fill:#606A72;}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:none;stroke:#606A72;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#0067E5;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st5{fill:none;stroke:#606A72;stroke-width:2;stroke-miterlimit:10;}
+	.st6{fill:#0067E6;}
+</style>
+<g>
+	<g>
+		<path class="st1" d="M80,24v40H16V24H80 M82,22H14v44h68V22L82,22z"/>
+	</g>
+	<g>
+		<path class="st1" d="M76,28v32H20V28H76 M78,26H18v36h60V26L78,26z"/>
+	</g>
+	<g>
+		<rect x="22" y="38" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 46 78)" class="st1" width="2" height="2"/>
+		<rect x="22" y="42" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 46 86)" class="st1" width="2" height="2"/>
+		<rect x="22" y="46" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 46 94)" class="st1" width="2" height="2"/>
+		<rect x="22" y="50" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 46 102)" class="st1" width="2" height="2"/>
+		<rect x="22" y="54" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 46 110)" class="st1" width="2" height="2"/>
+		<rect x="22" y="34" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 46 70)" class="st1" width="2" height="2"/>
+		<rect x="22" y="30" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 46 62)" class="st1" width="2" height="2"/>
+	</g>
+	<g>
+		<rect x="26" y="38" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 54 78)" class="st1" width="2" height="2"/>
+		<rect x="26" y="42" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 54 86)" class="st1" width="2" height="2"/>
+		<rect x="26" y="34" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 54 70)" class="st1" width="2" height="2"/>
+		<rect x="26" y="30" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 54 62)" class="st1" width="2" height="2"/>
+	</g>
+	<g>
+		<rect x="35" y="71" class="st1" width="26" height="2"/>
+	</g>
+	<g>
+		<rect x="47" y="66" class="st1" width="2" height="7"/>
+	</g>
+	<path class="st0" d="M69,41c-1.1,0-2.1-0.3-3-0.8V49l3-2.2l3,2.2v-8.8C71.1,40.7,70.1,41,69,41z"/>
+	<circle class="st0" cx="69" cy="35" r="5"/>
+</g>
+</svg>

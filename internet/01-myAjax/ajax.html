@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="username" id="username">
+        <input type="text" name="age" id="age">
+        <input type="submit" id="submit">
+    </form>
+    <br>
+    <button id='post'>获取新闻列表</button>
+    <ul id="ul"></ul>
+    <script>
+        // 获取新闻列表
+        post.onclick = function () {
+            myAjax('GET', './getNews.php', '', showNewsList, true);
+        }
+
+        //传递信息
+        submit.onclick = function (e) {
+            e.preventDefault();
+            var data = 'username=' + username.value + '&age=' + age.value;
+            myAjax('POST', './post.php', data, showPerson, true);
+        }
+
+        function myAjax(method, url, data, callback, flag, contentType) {
+            var ajax = new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHttp');
+            method = method.toUpperCase();
+            if (method == 'GET') {
+                var date = new Date(),
+                    timer = date.getTime();
+                ajax.open(method, url + '?' + data + '&timer=' + timer, flag);
+                ajax.send();
+            } else if (method == 'POST') {
+                contentType = contentType || 'application/x-www-form-urlencoded';
+                ajax.open(method, url, flag);
+                ajax.setRequestHeader('Content-type', contentType);
+                ajax.send(data);
+            }
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState == 4) {
+                    if (ajax.status == 200) {
+                        callback(ajax.responseText);
+                    }
+                }
+            }
+        }
+
+        function showNewsList(data) {
+            var value = JSON.parse(data);
+            var str = '';
+            value.forEach(function (ele, index) {
+                str += '<li>' + ele.title + '——' + ele.date + '</li>';
+            });
+            ul.innerHTML = str;
+        }
+
+        function showPerson(data) {
+            alert(data);
+        }
+
+    </script>
+</body>
+
+</html>
